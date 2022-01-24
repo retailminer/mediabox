@@ -246,7 +246,14 @@ services:
         - '${MUSICDIR}:/data/music'
         - '${TVDIR}:/data/tvshows'
         - '/etc/localtime:/etc/localtime:ro'
-
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+            
   # ----------------------------------------
   # PORTAINER
   # ----------------------------------------
