@@ -169,37 +169,25 @@ fi
 # Adjust for Container name changes
 [ -d "sickrage/" ] && mv sickrage/ sickchill  # Switch from Sickrage to SickChill
 
-mkdir -p couchpotato
 mkdir -p delugevpn
 mkdir -p delugevpn/config/openvpn
-mkdir -p duplicati
-mkdir -p duplicati/backups
 mkdir -p filebrowser
 mkdir -p flaresolverr
 mkdir -p glances
-mkdir -p headphones
 mkdir -p historical/env_files
 mkdir -p homer
 mkdir -p jackett
-mkdir -p jellyfin
 mkdir -p lidarr
-mkdir -p minio
 mkdir -p muximux
-mkdir -p nzbget
-mkdir -p nzbhydra2
-mkdir -p ombi
 mkdir -p overseerr
 mkdir -p "plex/Library/Application Support/Plex Media Server/Logs"
 mkdir -p portainer
 mkdir -p radarr
 mkdir -p requestrr
-mkdir -p sickchill
 mkdir -p sonarr
 mkdir -p speedtest
 mkdir -p sqlitebrowser
 mkdir -p tautulli
-mkdir -p tdarr
-mkdir -p tubesync
 
 # Create menu - Select and Move the PIA VPN files
 echo "The following PIA Servers are avialable that support port-forwarding (for DelugeVPN); Please select one:"
@@ -325,23 +313,6 @@ docker stop jackett > /dev/null 2>&1
 perl -i -pe 's/"FlareSolverrUrl": ".*",/"FlareSolverrUrl": "http:\/\/'"$locip"':8191",/g' jackett/Jackett/ServerConfig.json
 docker start jackett > /dev/null 2>&1
 
-# Configure NZBGet
-[ -d "content/nbzget" ] && mv content/nbzget/* content/ && rmdir content/nbzget
-while [ ! -f nzbget/nzbget.conf ]; do sleep 1; done
-docker stop nzbget > /dev/null 2>&1
-perl -i -pe "s/ControlUsername=nzbget/ControlUsername=$daemonun/g"  nzbget/nzbget.conf
-perl -i -pe "s/ControlPassword=tegbzn6789/ControlPassword=$daemonpass/g"  nzbget/nzbget.conf
-perl -i -pe "s/{MainDir}\/intermediate/{MainDir}\/incomplete/g" nzbget/nzbget.conf
-docker start nzbget > /dev/null 2>&1
-
-# Push the Deluge Daemon and NZBGet Access info the to Auth file and the .env file
-echo "$daemonun":"$daemonpass":10 >> ./delugevpn/config/auth
-{
-echo "CPDAEMONUN=$daemonun"
-echo "CPDAEMONPASS=$daemonpass"
-echo "NZBGETUN=$daemonun"
-echo "NZBGETPASS=$daemonpass"
-} >> .env
 
 # Configure Homer settings and files
 while [ ! -f homer/config.yml ]; do sleep 1; done
