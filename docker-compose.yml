@@ -237,7 +237,7 @@ services:
         - ALLOWED_NETWORKS=${CIDR_ADDRESS}
         - PLEX_UID=${PUID}
         - PLEX_GID=${PGID}
-        - NVIDIA_VISIBLE_DEVICES=ALL
+        - VERSION=latest
     hostname: ${HOSTNAME}
     volumes:
         - './plex:/config'
