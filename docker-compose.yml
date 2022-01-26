@@ -219,7 +219,7 @@ services:
   plex:
     container_name: plex
 #    image: plexinc/pms-docker:${PMSTAG}
-    image: lscr.io/linuxserver/plex:latest
+    image: lscr.io/linuxserver/plex:${PMSTAG}
     restart: unless-stopped
     network_mode: "bridge"
     ports:
