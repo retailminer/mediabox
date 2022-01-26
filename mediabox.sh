@@ -9,7 +9,7 @@ fi
 # set -x
 
 # See if we need to check GIT for updates
-if [ -e .env ]; then
+#if [ -e .env ]; then
     # Check for Updated Docker-Compose
 #    printf "Checking for update to Docker-Compose (If needed - You will be prompted for SUDO credentials).\\n\\n"
 #    onlinever=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep "tag_name" | cut -d ":" -f2 | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')
@@ -20,9 +20,9 @@ if [ -e .env ]; then
 #        sudo curl -s https://api.github.com/repos/docker/compose/releases/latest | grep "browser_download_url" | grep -i -m1 "$(uname -s)"-"$(uname -m)" | cut -d '"' -f4 | xargs sudo curl -L -o /usr/local/bin/docker-compose
 #        sudo chmod +x /usr/local/bin/docker-compose
 #        printf "\\n\\n"
-    else
-        printf "No Docker-Compose Update needed.\\n\\n"
-    fi
+#    else
+#        printf "No Docker-Compose Update needed.\\n\\n"
+#    fi
     # Stash any local changes to the base files
     git stash > /dev/null 2>&1
     printf "Updating your local copy of Mediabox.\\n\\n"
