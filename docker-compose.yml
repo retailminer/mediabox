@@ -238,7 +238,6 @@ services:
         - ALLOWED_NETWORKS=${CIDR_ADDRESS}
         - PLEX_UID=${PUID}
         - PLEX_GID=${PGID}
-        - VERSION=latest
     hostname: ${HOSTNAME}
     volumes:
         - './plex:/config'
