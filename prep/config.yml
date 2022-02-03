@@ -108,12 +108,6 @@ services:
   - name: "Monitor It"
     icon: "fas fa-heartbeat"
     items:
-      - name: "Dozzle"
-        logo: "assets/icons/dozzle.png"
-        tag: "monitor"
-        tagstyle: "is-danger"
-        url: "http://locip:9999"
-        target: "_blank"
       - name: "Glances"
         logo: "assets/icons/glances.png"
         tag: "monitor"
