@@ -218,8 +218,8 @@ services:
   # ----------------------------------------
   plex:
     container_name: plex
-    image: plexinc/pms-docker:${PMSTAG}
-#    image: lscr.io/linuxserver/plex:latest
+#    image: plexinc/pms-docker:${PMSTAG}
+    image: lscr.io/linuxserver/plex:latest
     restart: unless-stopped
     network_mode: "bridge"
     ports:
@@ -236,9 +236,12 @@ services:
         - PLEX_CLAIM=${PMSTOKEN}
         - ADVERTISE_IP=http://${IP_ADDRESS}:32400/
         - ALLOWED_NETWORKS=${CIDR_ADDRESS}
-        - PUID=${PUID}
-        - PGID=${PGID}
-        - VERSION=latest
+ #       - PUID=${PUID}
+ #       - PGID=${PGID}
+ #       - VERSION=latest
+        - PUID=1000
+        - PGID=1000
+        - VERSION=docker
     hostname: ${HOSTNAME}
     volumes:
         - './plex:/config'
