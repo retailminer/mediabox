@@ -50,23 +50,6 @@ services:
         - '/etc/localtime:/etc/localtime:ro'
 
   # ----------------------------------------
-  # FILEBROWSER
-  # ----------------------------------------
-  filebrowser:
-    image: hurlenko/filebrowser
-    container_name: filebrowser
-    restart: unless-stopped
-    network_mode: "bridge"
-    user: "${PUID}:${PGID}"
-    ports:
-        - '${IP_ADDRESS}:8008:8080'
-    environment:
-        - FB_BASEURL=/filebrowser
-    volumes:
-        - './filebrowser:/config'
-        - '${PWD}:/data/mediabox'
-
-  # ----------------------------------------
   # FLARESOLVERR
   # ----------------------------------------
   flaresolverr:
@@ -83,26 +66,6 @@ services:
     volumes:
         - /etc/localtime:/etc/localtime:ro
         - ./flaresolverr:/storage
-
-  # ----------------------------------------
-  # GLANCES
-  # ----------------------------------------
-  glances:
-    image: nicolargo/glances:latest-alpine
-    container_name: glances
-    restart: unless-stopped
-    network_mode: "bridge"
-    pid: host
-    ports:
-        - '${IP_ADDRESS}:61208:61208'
-    environment:
-        - PUID=${PUID}
-        - PGID=${PGID}
-        - TZ=${TZ}
-        - GLANCES_OPT=-w
-    volumes:
-        - './glances:/config'
-        - '/var/run/docker.sock:/var/run/docker.sock:ro'
 
   # ----------------------------------------
   # HOMER
@@ -172,45 +135,6 @@ services:
         - PGID=${PGID}
     volumes:
         - './muximux:/config'
-        - '/etc/localtime:/etc/localtime:ro'
-
-  # ----------------------------------------
-  # NETDATA
-  # ----------------------------------------
-  netdata:
-    image: netdata/netdata:latest
-    container_name: netdata
-    hostname: '${HOSTNAME}'
-    restart: unless-stopped
-    network_mode: "bridge"
-    ports:
-        - '${IP_ADDRESS}:19999:19999'
-    cap_add:
-        - SYS_PTRACE
-    security_opt:
-        - apparmor:unconfined
-    environment:
-        - PGID=${DOCKERGRP}
-    volumes:
-        - '/proc:/host/proc:ro'
-        - '/sys:/host/sys:ro'
-        - '/var/run/docker.sock:/var/run/docker.sock:rw'
-
-  # ----------------------------------------
-  # OMBI
-  # ----------------------------------------
-  ombi:
-    image: lscr.io/linuxserver/ombi
-    container_name: ombi
-    restart: unless-stopped
-    network_mode: "bridge"
-    ports:
-        - '${IP_ADDRESS}:3579:3579'
-    environment:
-        - PUID=${PUID}
-        - PGID=${PGID}
-    volumes:
-        - './ombi:/config'
         - '/etc/localtime:/etc/localtime:ro'
 
   # ----------------------------------------
@@ -316,42 +240,6 @@ services:
         - '${DLDIR}/completed:/data/completed'
         - '${TVDIR}:/tv'
         - '/etc/localtime:/etc/localtime:ro'
-
-  # ----------------------------------------
-  # SPEEDTEST
-  # ----------------------------------------
-  speedtest:
-    image: henrywhitaker3/speedtest-tracker:dev
-    container_name: speedtest
-    restart: unless-stopped
-    network_mode: "bridge"
-    ports:
-        - '${IP_ADDRESS}:8765:80'
-    environment:
-        - TZ=${TZ}
-        - PGID=${PGID}
-        - PUID=${PUID}
-        - OOKLA_EULA_GDPR=true
-    volumes:
-        - './speedtest:/config'
-
-  # ----------------------------------------
-  # SQLITEBROWSER
-  # ----------------------------------------
-  sqlitebrowser:
-    image: lscr.io/linuxserver/sqlitebrowser
-    container_name: sqlitebrowser
-    restart: unless-stopped
-    network_mode: "bridge"
-    ports:
-        - ${IP_ADDRESS}:3000:3000
-    environment:
-        - PUID=${PUID}
-        - PGID=${PGID}
-        - TZ=${TZ}
-    volumes:
-        - ./sqlitebrowser:/config
-        - ${PWD}:/config/mediabox
 
   # ----------------------------------------
   # TAUTULLI
