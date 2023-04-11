@@ -142,8 +142,8 @@ services:
   # ----------------------------------------
   plex:
     container_name: plex
-#    image: plexinc/pms-docker:${PMSTAG}
-    image: lscr.io/linuxserver/plex:amd64-latest
+    image: plexinc/pms-docker:${PMSTAG}
+#    image: lscr.io/linuxserver/plex:amd64-latest
     restart: unless-stopped
     network_mode: "bridge"
     ports:
