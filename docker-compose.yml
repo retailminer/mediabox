@@ -187,7 +187,7 @@ services:
   # PORTAINER
   # ----------------------------------------
   portainer:
-    image: portainer/portainer-ce:2.19.1
+    image: portainer/portainer-ce:2.18.4
     container_name: portainer
     restart: unless-stopped
     network_mode: "bridge"
