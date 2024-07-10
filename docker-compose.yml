@@ -46,7 +46,7 @@ services:
         - PUID=${PUID}
         - PGID=${PGID}
     volumes:
-        - '/home/media/downloads:/data'
+        - '${DLDIR}:/data'
         - './delugevpn/config:/config'
         - '/etc/localtime:/etc/localtime:ro'
 
