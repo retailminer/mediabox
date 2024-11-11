@@ -280,3 +280,22 @@ services:
     volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
 
+  # ----------------------------------------
+  # Maintainerr
+  # ----------------------------------------
+  
+    maintainerr:
+        image: jorenn92/maintainerr:latest
+        container_name: maintainerr
+        volumes:
+        - './maintainerr:/data'
+        - '/var/run/docker.sock:/var/run/docker.sock'
+        environment:
+        - PUID=${PUID}
+        - PGID=${PGID}
+        - TZ=${TZ}
+#      - DEBUG=true # uncomment to enable debug logs
+#      - UI_PORT=6247 # uncomment to change the UI port (default 6246). Useful if you're on a network where the port is already in use
+#      - API_PORT=3002 # uncomment to change the API port (default 3001). Useful if you're on a network where the port is already in use
+        ports:
+          - '${IP_ADDRESS}:6246:6246'
