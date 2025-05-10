@@ -101,6 +101,25 @@ services:
         - './jackett:/config'
         - '${DLDIR}/completed:/downloads'
         - '/etc/localtime:/etc/localtime:ro'
+        
+  # ----------------------------------------
+  # JELLYFIN
+  # ----------------------------------------
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    restart: unless-stopped
+    network_mode: "bridge"
+    user: "${PUID}:${PGID}"
+    ports:
+        - '${IP_ADDRESS}:8096:8096'
+    volumes:
+        - './jellyfin:/config'
+        - '${MISCDIR}:/media/misc'
+        - '${MOVIEDIR}:/media/movies'
+        - '${MUSICDIR}:/media/music'
+        - '${TVDIR}:/media/tv'
+        - '/etc/localtime:/etc/localtime:ro'
 
   # ----------------------------------------
   # LIDARR
