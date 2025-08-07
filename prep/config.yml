@@ -59,6 +59,9 @@ links:
   - name: "Muximux"
     icon: "fas fa-table"
     url: "http://locip:8080"
+  - name: "FlareSolverr"
+    icon: "fas fa-shield-alt"
+    url: "http://locip:8191"
 
 # Services
 # First level array represent a group.
@@ -77,6 +80,12 @@ services:
         tag: "get"
         tagstyle: "is -info"
         url: "http://locip:9117"
+        target: "_blank"
+      - name: "FlareSolverr"
+        logo: "assets/icons/flaresolverr.png"
+        tag: "get"
+        tagstyle: "is -info"
+        url: "http://locip:8191"
         target: "_blank"
   - name: "Manage It"
     icon: "fas fa-edit"
