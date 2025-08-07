@@ -279,3 +279,21 @@ services:
         - TZ=${TZ}
     volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
+
+  # ----------------------------------------
+  # MAINTAINERR
+  # ----------------------------------------
+  maintainerr:
+    image: jorenn92/maintainerr:latest
+    container_name: maintainerr
+    restart: unless-stopped
+    network_mode: "bridge"
+    ports:
+        - '${IP_ADDRESS}:6246:6246'
+    environment:
+        - PUID=${PUID}
+        - PGID=${PGID}
+        - TZ=${TZ}
+    volumes:
+        - './maintainerr:/data'
+        - '/etc/localtime:/etc/localtime:ro'

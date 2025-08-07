@@ -105,3 +105,12 @@ url = "http://locip:8181"
 scale = 1
 icon = "muximux-plexivity"
 color = "#cc7b19"
+enabled = "true"
+
+[Maintainerr]
+name = "Maintainerr"
+url = "http://locip:6246"
+scale = 1
+icon = "muximux-cog"
+color = "#4a90e2"
+enabled = "true"
