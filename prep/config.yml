@@ -101,7 +101,7 @@ services:
         target: "_blank"
       - name: "Maintainerr"
         logo: "assets/icons/maintainerr.png"
-        tag: "monitor"
+        tag: "manage"
         tagstyle: "is-danger"
         url: "http://locip:6246"
         target: "_blank"
