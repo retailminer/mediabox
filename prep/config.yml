@@ -102,7 +102,7 @@ services:
       - name: "Maintainerr"
         logo: "assets/icons/maintainerr.png"
         tag: "manage"
-        tagstyle: "is-danger"
+        tagstyle: "is-info"
         url: "http://locip:6246"
         target: "_blank"
   - name: "Monitor It"
